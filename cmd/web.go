@@ -12,7 +12,7 @@ func main() {
 	// Define where is the app root path
 	dir, err := os.Getwd()
 	if err != nil {
-		panic("Coult not find current working dir to start up application")
+		panic("Could not find current working dir to start up application")
 	}
 	appRootPath := fmt.Sprintf("%s/..", dir)
 
