@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+
+  webapp:
+    # This is overwriting .env file to always force this host
+    environment:
+      DATABASE_HOST: database
+
+    # Restart everytime we have an error
+    restart: always
+
+    # Build it from the local dockerfile
+    build: ./
+
+   # Port 8080 on the host system will correspond to APP_PORT on the container
+    ports:
+      - "8080:${APP_PORT}"
+
+    # Load up after the database container is up
+    depends_on:
+      - database
+
+    # The host "database" on this container will be mapped to the db container IP
+    links:
+      - database
+
+
+
+  database:
+    # Based on external image
+    image: mysql:latest
+
+    # Restart everytime we have an error
+    restart: always
+
+    # Main params
+    environment:
+      MYSQL_DATABASE: "${DATABASE_NAME}"
+      MYSQL_USER: "${DATABASE_USER}"
+      MYSQL_PASSWORD: "${DATABASE_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${DATABASE_PASSWORD}"
+
+    # Expose this container 3306 port to the rest of the docker network
+    expose:
+      - 3306
+
+    # For data persistence
+    volumes:
+      - ./.database/mysql:/var/lib/mysql

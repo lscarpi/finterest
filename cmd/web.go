@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/labstack/echo"
 	"github.com/lscarpi/finterest/src/core"
 	"github.com/lscarpi/finterest/src/web"
@@ -9,15 +8,9 @@ import (
 )
 
 func main() {
-	// Define where is the app root path
-	dir, err := os.Getwd()
-	if err != nil {
-		panic("Could not find current working dir to start up application")
-	}
-	appRootPath := fmt.Sprintf("%s/..", dir)
 
 	// Boot up main application items (like .env file and possible configs)
-	core.Boot(appRootPath)
+	core.Boot()
 
 	// Create new echo instance
 	e := echo.New()
@@ -30,6 +23,6 @@ func main() {
 
 	// Start the server
 	e.Logger.Fatal(
-		e.Start(":1323"),
+		e.Start(":" + os.Getenv("APP_PORT")),
 	)
 }

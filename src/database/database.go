@@ -27,6 +27,11 @@ func ConnectToDatabase() error {
 
 	databaseDriver := os.Getenv("DATABASE_DRIVER")
 
+	// If nothing in the env
+	if databaseDriver == "" {
+		return errors.New("no database driver specified")
+	}
+
 	// Check if driver is supported
 	driver, ok := supportedDrivers[databaseDriver]
 	if !ok {

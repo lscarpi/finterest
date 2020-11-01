@@ -14,7 +14,7 @@ type SQLite struct{}
 func (SQLite) Connect() (*gorm.DB, error) {
 
 	databaseName := os.Getenv("DATABASE_NAME")
-	databasePath := fmt.Sprintf("%s/%s", helpers.GetAppRootPath(), databaseName)
+	databasePath := fmt.Sprintf("%s/%s", helpers.GetCurrentWorkingDir(), databaseName)
 
 	db, err := gorm.Open(sqlite.Open(databasePath), &gorm.Config{})
 
