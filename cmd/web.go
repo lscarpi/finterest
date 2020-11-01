@@ -22,6 +22,9 @@ func main() {
 	// Create new echo instance
 	e := echo.New()
 
+	// Register the Validator Service
+	web.RegisterValidator(e)
+
 	// Get web package and register the routes
 	web.RegisterRoutes(e)
 

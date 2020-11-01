@@ -15,7 +15,8 @@ func Boot(appRootPath string) {
 	loadDotEnvFile(appRootPath)
 	// Connect to DB
 	connectToDatabase()
-	// More stuff here in the future?
+	// Run migrations
+	migrateDatabase()
 }
 
 func setAppRootPath(appRootPath string) {
@@ -31,6 +32,13 @@ func loadDotEnvFile(appRootPath string) {
 
 func connectToDatabase() {
 	err := database.ConnectToDatabase()
+	if err != nil {
+		panic(err)
+	}
+}
+
+func migrateDatabase() {
+	err := database.Migrate()
 	if err != nil {
 		panic(err)
 	}

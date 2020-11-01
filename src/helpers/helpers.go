@@ -20,6 +20,10 @@ func GetAppRootPath() string {
 	return appRootPath
 }
 
+func GetAppKey() string {
+	return os.Getenv("APP_KEY")
+}
+
 func GetAppEnv() string {
 	return os.Getenv("APP_ENV")
 }
