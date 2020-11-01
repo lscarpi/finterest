@@ -19,6 +19,8 @@ func Boot() {
 	connectToDatabase()
 	// Run migrations
 	migrateDatabase()
+	// Add dummy data if needed
+	insertDummyData()
 }
 
 func prepareRuntime() {
@@ -57,6 +59,18 @@ func connectToDatabase() {
 
 func migrateDatabase() {
 	err := database.Migrate()
+	if err != nil {
+		panic(err)
+	}
+}
+
+func insertDummyData() {
+
+	if helpers.IsProductionEnv() {
+		return
+	}
+
+	err := database.InsertDummyData()
 	if err != nil {
 		panic(err)
 	}

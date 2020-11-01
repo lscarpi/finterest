@@ -18,7 +18,7 @@ func (MySQL) Connect() (*gorm.DB, error) {
 	databaseUser := os.Getenv("DATABASE_USER")
 	databasePassword := os.Getenv("DATABASE_PASSWORD")
 
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8",
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=true",
 		databaseUser, databasePassword, databaseHost, databasePort, databaseName,
 	)
 
