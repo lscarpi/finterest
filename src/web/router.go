@@ -14,6 +14,9 @@ func RegisterRoutes(e *echo.Echo) {
 	// Enable secure middleware
 	e.Use(middleware.Secure())
 
+	// Enable CORS
+	e.Use(middleware.CORS())
+
 	// Enable logging?
 	if os.Getenv("APP_ENV") == "local" {
 		e.Use(middleware.Logger())
