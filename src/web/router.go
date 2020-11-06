@@ -27,8 +27,8 @@ func RegisterRoutes(e *echo.Echo) {
 	* * * * * * * * * * * * * * * * * * */
 
 	//TODO: Make this better (relative paths might break)
-	e.File("/", "frontend/public/index.html")
-	e.Static("/assets", "frontend/assets")
+	e.File("/", "frontend/build/index.html")
+	e.Static("/", "frontend/build/")
 
 	/* * * * * * * * * * * * * * * * * * *
 				Backend Routes
