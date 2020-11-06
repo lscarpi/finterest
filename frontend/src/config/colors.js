@@ -1,0 +1,7 @@
+export const black = 'rgba(51,51,51)'
+export const transparentBlack = 'rgba(51,51,51,.8)'
+export const transparentDarkerBlack = 'rgba(51,51,51,.9)'
+export const themeRed = '#e60023'
+export const white = '#ffffff'
+export const borderGray = '#ddd'
+export const inputFocusBlue = 'rgba(0,132,255,.5)'

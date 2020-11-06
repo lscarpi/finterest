@@ -2,3 +2,4 @@
 vendor/
 *.db
 .database/
+frontend/node_modules/*
