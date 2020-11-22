@@ -64,10 +64,6 @@ export const actions = {
   rememberMe: (rememberMe) => ({
     type: actionStrings.REMEMBER_ME,
     payload: rememberMe
-  }),
-  saveLoginData: (data) => ({
-    type: actionStrings.SAVE_LOGIN_DATA,
-    payload: data
   })
 };
   

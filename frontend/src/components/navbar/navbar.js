@@ -13,7 +13,7 @@ const NavbarWrapper = styled.div`
   padding: 0 24px;
 `
 
-export const Navbar = () => {
+export const Navbar = (props) => {
   const [showLogin, setShowLogin] = useState(false)
 
   const handleShowLogin = () => {
@@ -32,7 +32,7 @@ export const Navbar = () => {
         if={showLogin} 
         then={
           <Modal onClose={handleShowLogin}>
-            <Auth />
+            <Auth history={props.history} />
           </Modal>
         }
       />

@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Navbar } from '../../components/navbar/navbar'
 
 const Dashboard = (props) => {
   
   return (
     <div>
-      <h1>Dashboard</h1>
+      <Navbar history={props.history} />
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { isLoggedIn, isLoginInProgress } from './redux/auth/selectors'
 
 const DefaultRouteBase = (props) => {
+  console.log(props)
   useEffect(() => {
     if (props.isLoggedIn) {
       const url = (props.history.location?.state?.from?.pathname)

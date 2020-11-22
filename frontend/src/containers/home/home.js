@@ -19,10 +19,10 @@ const Card = styled.div`
 `
 
 const Home = (props) => {
-  
+  console.log(props)
   return (
     <div>
-      <Navbar />
+      <Navbar history={props.history} />
       <CardWrapper>
         <Card />
         <Card />

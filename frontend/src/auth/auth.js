@@ -37,6 +37,7 @@ const FormWrapper = styled.div`
 `
 
 const Auth = (props) => {
+  console.log(props)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -50,7 +51,12 @@ const Auth = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    props.startLogin(email,password)
+    props.startLogin(
+      email,
+      password
+    ).then(
+      props.history.push('/dashboard')
+    )
   }
   
   return(

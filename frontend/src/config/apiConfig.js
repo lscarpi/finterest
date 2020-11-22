@@ -4,7 +4,7 @@ export const config = {
   API_VERSION: process.env.REACT_APP_API_VERSION || 'v1',
 
   API: {
-    LOGIN: 'auth/login'
+    LOGIN: 'api/auth/login'
   },
 
   CONTENT_TYPES: {
@@ -18,14 +18,6 @@ export const config = {
     PUT: 'PUT',
     DELETE: 'DELETE'
   }
-}
-
-export const REQUEST_METHODS = {
-  GET: 'GET',
-  POST: 'POST',
-  PUT: 'PUT',
-  DELETE: 'DELETE',
-  HEAD: 'HEAD'
 }
 
 export const appConfig = {

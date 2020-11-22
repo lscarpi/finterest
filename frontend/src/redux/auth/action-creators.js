@@ -15,9 +15,8 @@ export const startLogin = (
 
   return loginUser(email, password)
     .then(response => {
-      dispatch(actions.saveLoginData(response))
-      dispatch(actions.loginSuccess(response))
       saveData(response, localStorageKey)
+      dispatch(actions.loginSuccess(response))
       
       return response;
     })

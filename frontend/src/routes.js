@@ -8,49 +8,45 @@ import { isLoggedIn } from './redux/auth/selectors';
 import { history } from './redux/store';
 import { DefaultRoute } from './defaultRoute';
 
-export const PublicRoutes = function (state) {
-  return (
-    <ConnectedRouter history={history}>
-      <Router>
-        <Switch>
-          <Route 
-            exact 
-            path='/' 
-            component={Home} 
-          />
-          <Route 
-            path="*" 
-            component={
-              (props) => <DefaultRoute {...state} {...props}/>
-            }
-          />
-          <PrivateRoute
-            path='/dashboard'
-            component={Dashboard}
-            loggedIn={state.isLoggedIn}
-          />
-        </Switch>
-      </Router>
-    </ConnectedRouter>
-  );
-};
+const PublicRoutes = (state, props) => (
+  <ConnectedRouter history={history}>
+    <Router>
+      <Switch>
+        <Route 
+          exact 
+          path='/' 
+          component={Home} 
+        />
+        <Route 
+          path="*" 
+          component={
+            (props) => <DefaultRoute {...state} {...props}/>
+          }
+        />
+        <PrivateRoute
+          path='/dashboard'
+          component={Dashboard}
+          loggedIn={props.isLoggedIn}
+        />
+      </Switch>
+    </Router>
+  </ConnectedRouter>
+)
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={
-        (props) => (
-          rest.isLoggedIn
-            ? <Component {...props} />
-            : <Redirect
-                to={{ pathname: '/', state: { from: props.location } }}
-              />
-        )
-      }
-    />
-  );
-}
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={
+      (props) => (
+        rest.isLoggedIn
+          ? <Component {...props} />
+          : <Redirect
+              to={{ pathname: '/', state: { from: props.location } }}
+            />
+      )
+    }
+  />
+)
 
 const mapStateToProps = (state) => ({
   isLoggedIn: isLoggedIn(state)

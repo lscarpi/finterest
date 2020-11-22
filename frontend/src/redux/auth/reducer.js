@@ -3,7 +3,7 @@ import { actionStrings as actions } from './actions';
 
 const initState = fromJS({
   loginSent: false,
-  loggedIn: false,
+  isLoggedIn: false,
   token: '',
   isLoading: false,
   error: null,
@@ -20,8 +20,7 @@ export const reducer = (state = initState, action) => {
       return state.set('error', {
         error: action.payload.message,
         time: new Date()
-      })
-        .set('loginSent', false);
+      }).set('loginSent', false);
     case actions.LOGIN_SUCCESS:
       return state.set('isLoggedIn', true)
         .set('loginSent', false);
